@@ -1,0 +1,71 @@
+/* Стили для контейнера слайдера */
+.container {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+/* Стили для контейнеров дней */
+
+.day-container {
+    flex: 0 0 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-right: 20px;
+    scroll-snap-align: start;
+}
+
+
+.day-container:last-child {
+    margin-right: 0;
+}
+
+/* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 5px; /* Высота строки */
+}
+
+th, td {
+    white-space: nowrap;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    
+    
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+/* Добавьте стили для стрелок навигации (опционально) */
+
+.arrow-left, .arrow-right {
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.arrow-left {
+    left: 20px;
+}
+
+.arrow-right {
+    right: 20px;
+}
+
+
+.ri-circle-fill {
+    width: 50px;
+}

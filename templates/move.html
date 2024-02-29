@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Schedule</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/row.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+</head>
+<body>
+    <div class="logo" style="font-size: 30px; padding: 15px;">
+        <a href="/" style="text-decoration: none;"><i class="ri-home-2-fill"></i></a>
+    </div>
+
+    <div class="container">
+        {% for day in lesson_summary %}
+        <center>
+        <div class="day-container">
+            <h3>{{ day.weekday }}  <i class="ri-calendar-line"></i>  {{ day.date }}</h3>
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th class="level">Level</th>
+                    <th>Age</th>
+                    <th>Stu-s</th>
+                    <th>Leads</th>
+                </tr>
+                {% for lesson in day.lessons %}
+                <tr class="lesson-row" data-lesson-id="{{ lesson.id }}" data-lead-id="{{lead_id}}">
+                    <td>{{ lesson.time }}</td>
+                    <td>{{ lesson.level }}</td>
+                    <td>{{ lesson.average_age }}</td>
+                    <td>{{ lesson.total_students }}</td>
+                    <td>{{ lesson.total_leads }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        </center>
+        {% endfor %}
+        <div class="arrow-left"><i class="ri-arrow-left-circle-fill"></i></div>
+        <div class="arrow-right"><i class="ri-arrow-right-circle-fill"></i></div>
+
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/move.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* CSS styles for lesson rows */
+.lesson-row{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.lesson-row:hover {
+    background-color: #2c91cb; /* Измените цвет фона на ваш выбор */
+    cursor: pointer; /* Измените курсор на указатель, чтобы обозначить, что строка кликабельна */
+}
+
+h3{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+

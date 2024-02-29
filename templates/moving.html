@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Info</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lesson.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+</head>
+<body>
+    <div class="logo" style="font-size: 30px; padding: 15px;">
+        <a href="/" style="text-decoration: none;"><i class="ri-home-2-fill"></i></a>
+    </div>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="students-container">
+                <h2>Students</h2>
+                {% if lesson_info.students %}
+                    <ul class="students-list">
+                        {% for student in lesson_info.students %}
+                            <li>
+                                <span class="student-name" style="color: rgb(1, 148, 28);">{{ student.name }}</span>
+                                <span class="student-info">Age: {{ student.age }}</span>
+                                <div class="buttons">
+                                    <button class="delete-btn">Delete</button>
+                                    <button class="edit-btn">Reset</button>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No students enrolled</p>
+                {% endif %}
+            </div>
+        
+            <div class="leads-container">
+                <h2>Leads</h2>
+                {% if lesson_info.leads %}
+                    <ul class="leads-list">
+                        {% for lead in lesson_info.leads %}
+                            <li>
+                                <span class="lead-name" style="color: rgb(4, 73, 202);">{{ lead.name }}</span>
+                                <span class="lead-info">Age: {{ lead.age }} | <a href="{{ lead.phone }}">amo-deal</a></span>
+                                <div class="buttons">
+                                    <a href="{% url 'delete_lead' lead.id lesson_id %}"><button class="delete-btn">Delete</button></a>
+                                    <a href="{% url 'move_lead' lead.id %}"><button class="edit-btn">Move</button></a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No leads enrolled</p>
+                {% endif %}
+            </div>
+            
+            <div class="add-form">
+                <h2>Lesson level {{lesson.level}}</h2>
+                <form method="post" action="{% url 'lesson_view' lesson_id=lesson_id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="type">lvl type:</label>
+                        <select id="type" name="lvl-type">
+                            <option value="start" {% if lesson_info.lesson_level == "start" %}selected{% endif %}>Starter</option>
+                            <option value="pre-begin" {% if lesson_info.lesson_level == "pre-begin" %}selected{% endif %}>Pre Beginner</option>
+                            <option value="begin" {% if lesson_info.lesson_level == "begin" %}selected{% endif %}>Beginner</option>
+                            <option value="element" {% if lesson_info.lesson_level == "element" %}selected{% endif %}>Elementary</option>
+                            <option value="pre-inter" {% if lesson_info.lesson_level == "pre-inter" %}selected{% endif %}>Pre Intermediate</option>
+                            <option value="inter" {% if lesson_info.lesson_level == "inter" %}selected{% endif %}>Intermediate</option>
+                            <option value="up-inter" {% if lesson_info.lesson_level == "up-inter" %}selected{% endif %}>Upper Intermediate</option>
+                            <option value="advanc" {% if lesson_info.lesson_level == "advanc" %}selected{% endif %}>Advanced</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+        
+
+        <div class="right-column">
+            <div class="add-form">
+                <h2>Add Student/Lead</h2>
+                <form method="post" action="{% url 'lesson_view' lesson_id=lesson_id%}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="{{ lead.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" name="phone" value="{{ lead.phone }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" value="{{ lead.age }}" required>
+                        <input type="hidden" name="is_move" id="is_move" value="{{ lead.id }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select id="type" name="type">
+                            <option value="lead" selected>Lead</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+
+            </div>
+            <h2 style="color:gray; font-family: 'Times New Roman', Times, serif; padding: 30px;">{{ weekday }}  <i class="ri-calendar-line"></i>  {{ date }}</h2>
+        </div>
+    </div>
+</body>
+</html>

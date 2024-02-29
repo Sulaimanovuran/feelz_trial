@@ -1,0 +1,139 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Left column styles */
+.left-column {
+    flex: 1;
+    margin-right: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.students-container, .leads-container {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Right column styles */
+.right-column {
+    flex: 1;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.add-form {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Form styles */
+.form-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.form-group input, .form-group select {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group select {
+    padding-right: 20px;
+}
+
+/* List styles */
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.students-list, .leads-list {
+    list-style: none;
+    padding: 0;
+}
+
+.students-list li, .leads-list li {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.student-name, .lead-name {
+    font-weight: bold;
+}
+
+.student-info, .lead-info {
+    color: #4d4848;
+}
+
+/* Buttons styles */
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #cb0404;
+    color: #f5f2f2;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background-color: #e6db07;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-btn:hover, .edit-btn:hover {
+    background-color: #ccc;
+}
+
+/* Additional styles */
+.submit-btn {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}
